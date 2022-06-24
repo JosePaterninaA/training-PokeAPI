@@ -1,0 +1,10 @@
+server:
+  port: 8091
+
+graphql:
+  url:
+    pokemon-info: "https://beta.pokeapi.co/graphql/v1beta"
+
+services:
+  pokemon-info:
+    mainPath: "api/pokedex/info"
