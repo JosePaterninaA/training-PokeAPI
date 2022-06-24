@@ -19,6 +19,7 @@ public class PokemonInfoStringMapper {
     public PokemonInfo mapStringToPokemonInfo(String typeData, String descriptionData){
 
         ObjectMapper objectMapper = new ObjectMapper();
+
         PokemonInfo pokemonInfo = null;
         JsonNode typesNode = null;
         JsonNode descriptionNode = null;
@@ -56,7 +57,9 @@ public class PokemonInfoStringMapper {
             pokemonInfo = pokemonInfoBuilder.build();
 
         } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
+            //throw new RuntimeException(e); Log
+        } catch (NullPointerException e){
+            //Log
         }
 
         return pokemonInfo;
