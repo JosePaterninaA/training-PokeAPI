@@ -9,5 +9,6 @@ public class DescriptionItem {
 
 	private String descriptionText;
 	private String gameVersion;
-	
+	private String languageCode;
+
 }

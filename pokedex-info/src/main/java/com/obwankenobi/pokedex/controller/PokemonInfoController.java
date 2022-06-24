@@ -1,5 +1,6 @@
 package com.obwankenobi.pokedex.controller;
 
+import com.obwankenobi.pokedex.model.PokemonInfo;
 import com.obwankenobi.pokedex.model.PokemonRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +18,7 @@ public class PokemonInfoController {
 	PokemonInfoService pokemonInfoService;
 	
 	@GetMapping("/api/pokedex/info")
-	public ResponseEntity<String> pokemonInfo(@RequestBody PokemonRequest request){
+	public ResponseEntity<PokemonInfo> pokemonInfo(@RequestBody PokemonRequest request){
 		return ResponseEntity.ok(pokemonInfoService.getPokemonInfoByName(request.getName()));
 	}
 }
