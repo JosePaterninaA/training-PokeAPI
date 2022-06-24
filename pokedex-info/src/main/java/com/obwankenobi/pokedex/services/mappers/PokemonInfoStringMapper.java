@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.obwankenobi.pokedex.model.DescriptionItem;
 import com.obwankenobi.pokedex.model.PokemonInfo;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,9 +13,10 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
+@Component
 public class PokemonInfoStringMapper {
 
-    public static PokemonInfo mapStringToPokemonInfo(String typeData, String descriptionData){
+    public PokemonInfo mapStringToPokemonInfo(String typeData, String descriptionData){
 
         ObjectMapper objectMapper = new ObjectMapper();
         PokemonInfo pokemonInfo = null;
