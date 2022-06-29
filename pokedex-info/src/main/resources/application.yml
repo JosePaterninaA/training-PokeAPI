@@ -1,1 +1,19 @@
+server:
+  port: 8082
+  error:
+    include-stacktrace: never
 
+services:
+  pokemon-info:
+    main-path: "/api/pokedex/info"
+
+feign:
+  clients:
+    pokemon:
+      url: "https://pokeapi.co"
+      resource: "/api/v2/pokemon/{name}/"
+      name: "pokemon-client"
+    species:
+      url: "https://pokeapi.co"
+      resource: "/api/v2/pokemon-species/{name}/"
+      name: "species-client"

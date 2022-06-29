@@ -8,7 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.obwankenobi.pokedex.services.PokemonInfoService;
@@ -20,12 +19,12 @@ public class PokemonInfoController {
 	@Autowired
 	PokemonInfoService pokemonInfoService;
 	
-	@GetMapping("/api/pokedex/info")
+	@GetMapping("${services.pokemon-info.main-path}")
 	public ResponseEntity<PokemonInfo> pokemonInfo(@RequestBody PokemonRequest request){
 		try{
 			return ResponseEntity.ok(pokemonInfoService.getPokemonInfoByName(request.getName()));
 		}catch (PokemonInfoException e){
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage(), e);
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		}
 	}
 }
