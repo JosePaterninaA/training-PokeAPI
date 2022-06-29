@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="fc4220ea-25e7-4a28-9ed2-c84ce58c9a72" name="Changes" comment="Agregadas propiedades en la configuracion. Polishing." />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="origin/feature-pokedexInfo-exception-handling" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="feature-pokedexInfo-feign-connection" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2AzmI0WWxMgCYzATRj1HCWgCD05" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+    "last_opened_file_path": "C:/Users/Jose/Documents/Workspace/Spring Apps/Pokemon Training/training-OBWK/discovery-server"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.obwankenobi.pokedex.util" />
+      <recent name="com.obwankenobi.pokedex.graphqlClients" />
+      <recent name="com.obwankenobi.pokedex.model.pokemonInfo.response" />
+      <recent name="com.obwankenobi.pokedex.model" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.PokedexInfoApplication">
+    <configuration name="PokedexInfoApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.obwankenobi.pokedex.PokedexInfoApplication" />
+      <module name="pokedex-info" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.obwankenobi.pokedex.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PokedexInfoGraphqlApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.obwankenobi.pokedex.PokedexInfoGraphqlApplication" />
+      <module name="pokedex-info-graphql" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.obwankenobi.pokedex.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PokemonInfoStringMapperTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="pokedex-info" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.obwankenobi.pokedex.services.mappers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.obwankenobi.pokedex.services.mappers" />
+      <option name="MAIN_CLASS_NAME" value="com.obwankenobi.pokedex.services.mappers.PokemonInfoStringMapperTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PokemonInfoStringMapperTest.givenEmptyTypeData_returnNull" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="pokedex-info" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.obwankenobi.pokedex.services.mappers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.obwankenobi.pokedex.services.mappers" />
+      <option name="MAIN_CLASS_NAME" value="com.obwankenobi.pokedex.services.mappers.PokemonInfoStringMapperTest" />
+      <option name="METHOD_NAME" value="givenEmptyTypeData_returnNull" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.PokedexInfoApplication" />
+        <item itemvalue="JUnit.PokemonInfoStringMapperTest" />
+        <item itemvalue="JUnit.PokemonInfoStringMapperTest.givenEmptyTypeData_returnNull" />
+        <item itemvalue="Application.PokedexInfoGraphqlApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fc4220ea-25e7-4a28-9ed2-c84ce58c9a72" name="Changes" comment="" />
+      <created>1656020705067</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1656020705067</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Agregadas propiedades en la configuracion. Polishing.">
+      <created>1656469141303</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1656469141304</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="1fd6ce87-f771-4957-87c7-39e15a69db3c">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="range">
+                    <value>
+                      <list>
+                        <option value="422f27acf007fc63bb8d54c7b54db9a2434e7379..38534f8f8b69096f0b941cf6887a5582e8192e10" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origin/feature-pokedexInfo-feign-connection" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Agregadas propiedades en la configuracion" />
+    <MESSAGE value="Agregadas propiedades en la configuracion. Polishing." />
+    <option name="LAST_COMMIT_MESSAGE" value="Agregadas propiedades en la configuracion. Polishing." />
+  </component>
+</project>
