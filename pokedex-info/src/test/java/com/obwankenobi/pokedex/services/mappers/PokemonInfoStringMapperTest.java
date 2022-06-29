@@ -20,6 +20,6 @@ public class PokemonInfoStringMapperTest {
         String typeData = "";
         String descriptionData = "";
 
-        assertNull(pokemonInfoStringMapper.mapStringToPokemonInfo(typeData, descriptionData));
+        assertNull(pokemonInfoStringMapper.mapJSONStringToPokemonInfo(typeData, descriptionData));
     }
 }

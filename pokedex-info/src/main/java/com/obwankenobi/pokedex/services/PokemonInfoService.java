@@ -11,22 +11,19 @@ import com.obwankenobi.pokedex.model.PokemonInfo;
 @Service
 public class PokemonInfoService {
 
+	@Autowired
+	PokemonClient pokemonClient;
 
 	@Autowired
-	private PokemonInfoStringMapper pokemonInfoStringMapper;
+	SpeciesClient speciesClient;
+	@Autowired
+	PokemonInfoStringMapper pokemonInfoStringMapper;
 
 	public PokemonInfo getPokemonInfoByName (String name) {
 
 		String pokemonTypeData = pokemonClient.getPokemonData(name);
 		String pokemonDescriptionData = speciesClient.getSpeciesData(name);
 
-		PokemonInfo response = pokemonInfoStringMapper.mapStringToPokemonInfo(pokemonTypeData, pokemonDescriptionData);
-		return response;
+		return pokemonInfoStringMapper.mapJSONStringToPokemonInfo(pokemonTypeData, pokemonDescriptionData);
 	}
-	
-	@Autowired
-	PokemonClient pokemonClient;
-
-	@Autowired
-	SpeciesClient speciesClient;
 }

@@ -5,9 +5,9 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.obwankenobi.pokedex.model.DescriptionItem;
 import com.obwankenobi.pokedex.model.PokemonInfo;
+import feign.FeignException;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -16,52 +16,49 @@ import java.util.stream.StreamSupport;
 @Component
 public class PokemonInfoStringMapper {
 
-    public PokemonInfo mapStringToPokemonInfo(String typeData, String descriptionData){
+    private static final String ID_FIELD = "id";
+    private static final String NAME_FIELD = "name";
+    private static final String TYPE_FIELD = "type";
+    private static final String TYPE_CONTAINER_FIELD = "types";
+    private static final String VERSION_FIELD = "version";
+    private static final String DESCRIPTION_FIELD = "flavor_text";
+    private static final String DESCRIPTION_CONTAINER_FIELD = "flavor_text_entries";
+    private static final String LANGUAGE_FIELD = "language";
+    private static final String ENGLISH = "en";
 
-        ObjectMapper objectMapper = new ObjectMapper();
-
-        PokemonInfo pokemonInfo = null;
-        JsonNode typesNode = null;
-        JsonNode descriptionNode = null;
-
+    public PokemonInfo mapJSONStringToPokemonInfo(String typeData, String descriptionData) {
         try {
-            typesNode = objectMapper.readTree(typeData);
-            descriptionNode = objectMapper.readTree(descriptionData);
 
-            PokemonInfo.PokemonInfoBuilder pokemonInfoBuilder = PokemonInfo.builder();
-            pokemonInfoBuilder
-                    .id(typesNode.get("id").asText())
-                    .name(typesNode.get("name").asText());
+            ObjectMapper objectMapper = new ObjectMapper();
 
-            JsonNode typesJson = typesNode.get("types");
-            JsonNode descriptionJson = descriptionNode.get("flavor_text_entries");
+            JsonNode typesNode = objectMapper.readTree(typeData);
+            JsonNode typesJson = typesNode.get(TYPE_CONTAINER_FIELD);
+            Stream<JsonNode> typesStream = StreamSupport.stream(typesJson.spliterator(), false);
+            List<String> types = typesStream.map(node -> node.get(TYPE_FIELD).get(NAME_FIELD).asText()).collect(Collectors.toList());
 
-            Iterable<JsonNode> typesIterable = () -> typesJson.iterator();
-            Stream<JsonNode> typesStream = StreamSupport.stream(typesIterable.spliterator(), false);
-            List<String> types = typesStream.map((node)->node.get("type").get("name").asText()).collect(Collectors.toList());
-
-            Iterable<JsonNode> descriptionIterable = () -> descriptionJson.iterator();
-            Stream<JsonNode> descriptionItemStream = StreamSupport.stream(descriptionIterable.spliterator(), false);
+            JsonNode descriptionNode = objectMapper.readTree(descriptionData);
+            JsonNode descriptionJson = descriptionNode.get(DESCRIPTION_CONTAINER_FIELD);
+            Stream<JsonNode> descriptionItemStream = StreamSupport.stream(descriptionJson.spliterator(), false);
             List<DescriptionItem> descriptionItems = descriptionItemStream
-                    .map((node)-> new DescriptionItem(
-                        node.get("flavor_text").asText(),
-                        node.get("version").get("name").asText(),
-                        node.get("language").get("name").asText()))
-                    .filter((node)->node.getLanguageCode().equalsIgnoreCase("en"))
+                    .map(node -> new DescriptionItem(
+                            node.get(DESCRIPTION_FIELD).asText(),
+                            node.get(VERSION_FIELD).get(NAME_FIELD).asText(),
+                            node.get(LANGUAGE_FIELD).get(NAME_FIELD).asText()))
+                    .filter(node -> node.getLanguageCode().equalsIgnoreCase(ENGLISH))
                     .collect(Collectors.toList());
 
-            pokemonInfoBuilder
-                    .types(types)
-                    .descriptionItems(descriptionItems);
-
-            pokemonInfo = pokemonInfoBuilder.build();
+            return PokemonInfo.builder()
+                .id(typesNode.get(ID_FIELD).asText())
+                .name(typesNode.get(NAME_FIELD).asText())
+                .types(types)
+                .descriptionItems(descriptionItems)
+                .build();
 
         } catch (JsonProcessingException e) {
             //throw new RuntimeException(e); Log
-        } catch (NullPointerException e){
+        } catch (NullPointerException e) {
             //Log
         }
-
-        return pokemonInfo;
+        return null;
     }
 }
