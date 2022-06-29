@@ -1,6 +1,7 @@
 package com.obwankenobi.pokedex.services.mappers;
 
 
+import com.obwankenobi.pokedex.exceptions.PokemonInfoException;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -16,7 +17,7 @@ public class PokemonInfoStringMapperTest {
     }
 
     @Test
-    public void givenEmptyTypeData_returnNull(){
+    public void givenEmptyTypeData_returnNull() throws PokemonInfoException {
         String typeData = "";
         String descriptionData = "";
 

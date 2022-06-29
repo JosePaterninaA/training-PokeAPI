@@ -1,7 +1,9 @@
 package com.obwankenobi.pokedex.services;
 
+import com.obwankenobi.pokedex.exceptions.PokemonInfoException;
 import com.obwankenobi.pokedex.feignclients.SpeciesClient;
 import com.obwankenobi.pokedex.services.mappers.PokemonInfoStringMapper;
+import feign.FeignException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,11 +21,15 @@ public class PokemonInfoService {
 	@Autowired
 	PokemonInfoStringMapper pokemonInfoStringMapper;
 
-	public PokemonInfo getPokemonInfoByName (String name) {
+	public PokemonInfo getPokemonInfoByName (String name) throws PokemonInfoException {
 
-		String pokemonTypeData = pokemonClient.getPokemonData(name);
-		String pokemonDescriptionData = speciesClient.getSpeciesData(name);
+		try{
+			String pokemonTypeData = pokemonClient.getPokemonData(name);
+			String pokemonDescriptionData = speciesClient.getSpeciesData(name);
 
-		return pokemonInfoStringMapper.mapJSONStringToPokemonInfo(pokemonTypeData, pokemonDescriptionData);
+			return pokemonInfoStringMapper.mapJSONStringToPokemonInfo(pokemonTypeData, pokemonDescriptionData);
+		}catch (PokemonInfoException | FeignException.FeignClientException e){
+			throw new PokemonInfoException(e.getMessage(), e);
+		}
 	}
 }

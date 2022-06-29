@@ -3,9 +3,9 @@ package com.obwankenobi.pokedex.services.mappers;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.obwankenobi.pokedex.exceptions.PokemonInfoException;
 import com.obwankenobi.pokedex.model.DescriptionItem;
 import com.obwankenobi.pokedex.model.PokemonInfo;
-import feign.FeignException;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -26,7 +26,7 @@ public class PokemonInfoStringMapper {
     private static final String LANGUAGE_FIELD = "language";
     private static final String ENGLISH = "en";
 
-    public PokemonInfo mapJSONStringToPokemonInfo(String typeData, String descriptionData) {
+    public PokemonInfo mapJSONStringToPokemonInfo(String typeData, String descriptionData) throws PokemonInfoException {
         try {
 
             ObjectMapper objectMapper = new ObjectMapper();
@@ -54,11 +54,8 @@ public class PokemonInfoStringMapper {
                 .descriptionItems(descriptionItems)
                 .build();
 
-        } catch (JsonProcessingException e) {
-            //throw new RuntimeException(e); Log
-        } catch (NullPointerException e) {
-            //Log
+        } catch (JsonProcessingException|NullPointerException e) {
+            throw new PokemonInfoException("Response could not be processed.",e);
         }
-        return null;
     }
 }
