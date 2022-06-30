@@ -6,6 +6,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
+/**
+ * Data que representa el response con información sobre un pokemon.
+ */
 @Data
 @AllArgsConstructor
 @Builder

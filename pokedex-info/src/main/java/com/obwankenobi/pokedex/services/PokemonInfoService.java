@@ -10,6 +10,9 @@ import org.springframework.stereotype.Service;
 import com.obwankenobi.pokedex.feignclients.PokemonClient;
 import com.obwankenobi.pokedex.model.PokemonInfo;
 
+/**
+ * Data usada como response body en las implementaciones de la API.
+ */
 @Service
 public class PokemonInfoService {
 
@@ -21,6 +24,12 @@ public class PokemonInfoService {
 	@Autowired
 	PokemonInfoStringMapper pokemonInfoStringMapper;
 
+	/**
+	 * Dado un nombre crea un {@link PokemonInfo} consolidando datos de {@link PokemonClient} y {@link SpeciesClient}
+	 * @param name
+	 * @return {@link PokemonInfo}
+	 * @throws PokemonInfoException
+	 */
 	public PokemonInfo getPokemonInfoByName (String name) throws PokemonInfoException {
 
 		try{

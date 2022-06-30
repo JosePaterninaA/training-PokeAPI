@@ -13,6 +13,9 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
+/**
+ * Deserializa JSON strings para obtener datos específicos.
+ */
 @Component
 public class PokemonInfoStringMapper {
 
@@ -26,16 +29,25 @@ public class PokemonInfoStringMapper {
     private static final String LANGUAGE_FIELD = "language";
     private static final String ENGLISH = "en";
 
+    /**
+     * Deserializa JSON strings con información sobre el tipo y descripción en un objeto del tipo {@link PokemonInfo}
+     * @param typeData
+     * @param descriptionData
+     * @return {@link PokemonInfo}
+     * @throws PokemonInfoException
+     */
     public PokemonInfo mapJSONStringToPokemonInfo(String typeData, String descriptionData) throws PokemonInfoException {
         try {
 
             ObjectMapper objectMapper = new ObjectMapper();
 
+            // Se obtiene la lista de tipos
             JsonNode typesNode = objectMapper.readTree(typeData);
             JsonNode typesJson = typesNode.get(TYPE_CONTAINER_FIELD);
             Stream<JsonNode> typesStream = StreamSupport.stream(typesJson.spliterator(), false);
             List<String> types = typesStream.map(node -> node.get(TYPE_FIELD).get(NAME_FIELD).asText()).collect(Collectors.toList());
 
+            // Se obtiene la lista de DescriptionItems
             JsonNode descriptionNode = objectMapper.readTree(descriptionData);
             JsonNode descriptionJson = descriptionNode.get(DESCRIPTION_CONTAINER_FIELD);
             Stream<JsonNode> descriptionItemStream = StreamSupport.stream(descriptionJson.spliterator(), false);

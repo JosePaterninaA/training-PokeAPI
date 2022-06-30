@@ -13,12 +13,20 @@ import org.springframework.web.bind.annotation.RestController;
 import com.obwankenobi.pokedex.services.PokemonInfoService;
 import org.springframework.web.server.ResponseStatusException;
 
+/**
+ * Controlador con APIS expuestas
+ */
 @RestController
 public class PokemonInfoController {
 
 	@Autowired
 	PokemonInfoService pokemonInfoService;
-	
+
+	/**
+	 * API que consulta tipos y descripciones de un pokemon dado su nombre.
+	 * @param request
+	 * @return
+	 */
 	@GetMapping("${services.pokemon-info.main-path}")
 	public ResponseEntity<PokemonInfo> pokemonInfo(@RequestBody PokemonRequest request){
 		try{
