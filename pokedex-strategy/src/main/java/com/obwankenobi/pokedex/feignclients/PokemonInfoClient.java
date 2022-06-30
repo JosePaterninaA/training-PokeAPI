@@ -6,7 +6,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient(url = "${feign.clients.info.url}", name = "${feign.clients.info.name}")
+@FeignClient("${feign.clients.info.name}")
 public interface PokemonInfoClient {
 
     @PostMapping(value = "${feign.clients.info.resource}")

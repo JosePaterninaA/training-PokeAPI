@@ -14,10 +14,8 @@ eureka:
 feign:
   clients:
     type:
-      url: "http://localhost:8081"
       resource: "/api/pokedex/type"
-      name: "pokemon-type"
+      name: "POKEDEX-TABLETYPES"
     info:
-      url: "http://localhost:8082"
       resource: "/api/pokedex/info"
-      name: "pokemon-info"
+      name: "POKEDEX-INFO"

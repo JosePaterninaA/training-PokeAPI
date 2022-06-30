@@ -5,7 +5,7 @@ import com.obwankenobi.pokedex.model.StrategyRequest;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
-@FeignClient(url = "${feign.clients.type.url}", name = "${feign.clients.type.name}")
+@FeignClient("${feign.clients.type.name}")
 public interface PokemonTableTypesClient {
 
     @PostMapping(value = "${feign.clients.type.resource}")
