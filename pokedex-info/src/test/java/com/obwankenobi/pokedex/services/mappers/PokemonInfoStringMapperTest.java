@@ -17,10 +17,10 @@ public class PokemonInfoStringMapperTest {
     }
 
     @Test
-    public void givenEmptyTypeData_returnNull() throws PokemonInfoException {
+    public void givenEmptyTypeData_throwsException() throws PokemonInfoException {
         String typeData = "";
         String descriptionData = "";
 
-        assertNull(pokemonInfoStringMapper.mapJSONStringToPokemonInfo(typeData, descriptionData));
+        assertThrows(PokemonInfoException.class, ()->pokemonInfoStringMapper.mapJSONStringToPokemonInfo(typeData, descriptionData));
     }
 }

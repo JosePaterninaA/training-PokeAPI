@@ -32,7 +32,7 @@ public class PokemonInfoController {
 		try{
 			return ResponseEntity.ok(pokemonInfoService.getPokemonInfoByName(request.getName()));
 		}catch (PokemonInfoException e){
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+			throw new ResponseStatusException(HttpStatus.OK, e.getMessage());
 		}
 	}
 }
