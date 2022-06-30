@@ -1,0 +1,15 @@
+server:
+  port: 8081
+  error:
+    include-stacktrace: never
+
+services:
+  pokemon-type:
+    main-path: "/api/pokedex/type"
+
+feign:
+  clients:
+    type:
+      url: "https://pokeapi.co"
+      resource: "/api/v2/type/{name}/"
+      name: "pokemon-type"
