@@ -2,9 +2,11 @@ package com.obwankenobi.pokedex.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class StrategyRequest {
-    private String propertyName;
+    private String name;
 }

@@ -17,6 +17,6 @@ public class PokemonStrategyController {
 
     @PostMapping("/api/pokedex/strategy")
     public ResponseEntity<PokemonStrategy> pokemonStrategyResponseEntity(@RequestBody StrategyRequest strategyRequest){
-        return ResponseEntity.ok(pokemonStrategyService.getPokemonStrategyByName(strategyRequest.getPropertyName()));
+        return ResponseEntity.ok(pokemonStrategyService.getPokemonStrategyByName(strategyRequest.getName()));
     }
 }

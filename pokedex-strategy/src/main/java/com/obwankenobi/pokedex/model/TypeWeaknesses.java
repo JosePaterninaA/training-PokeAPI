@@ -1,6 +1,6 @@
 package com.obwankenobi.pokedex.model;
 
-import com.obwankenobi.pokedex.feignclients.model.Weaknesses;
+import com.obwankenobi.pokedex.feignclients.model.Weakness;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -10,5 +10,5 @@ import java.util.List;
 @AllArgsConstructor
 public class TypeWeaknesses {
     private String type;
-    List<Weaknesses> weaknessesList;
+    List<Weakness> weaknessesList;
 }

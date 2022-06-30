@@ -3,14 +3,11 @@ package com.obwankenobi.pokedex.feignclients;
 import com.obwankenobi.pokedex.feignclients.model.PokemonTableTypes;
 import com.obwankenobi.pokedex.model.StrategyRequest;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
-@FeignClient(url = "${feign.clients.info.url}", name = "${feign.clients.info.name}")
+@FeignClient(url = "${feign.clients.type.url}", name = "${feign.clients.type.name}")
 public interface PokemonTableTypesClient {
 
-    @RequestMapping(value = "${feign.clients.info.resource}", method = RequestMethod.GET)
+    @PostMapping(value = "${feign.clients.type.resource}")
     public PokemonTableTypes getPokemonTableTypes(@RequestBody StrategyRequest type);
 }
