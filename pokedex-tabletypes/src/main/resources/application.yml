@@ -3,9 +3,19 @@ server:
   error:
     include-stacktrace: never
 
+spring:
+  application:
+    name: "pokedex-tabletypes"
+
 services:
   pokemon-type:
     main-path: "/api/pokedex/type"
+
+eureka:
+  client:
+    enabled: true
+    serviceUrl:
+      defaultZone: http://localhost:8010/eureka
 
 feign:
   clients:

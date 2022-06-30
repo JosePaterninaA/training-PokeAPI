@@ -3,9 +3,19 @@ server:
   error:
     include-stacktrace: never
 
+spring:
+  application:
+    name: "pokedex-info"
+
 services:
   pokemon-info:
     main-path: "/api/pokedex/info"
+
+eureka:
+  client:
+    enabled: true
+    serviceUrl:
+      defaultZone: http://localhost:8010/eureka
 
 feign:
   clients:
