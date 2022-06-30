@@ -1,0 +1,13 @@
+server:
+  port: 8083
+
+feign:
+  clients:
+    type:
+      url: "http://localhost:8081"
+      resource: "/api/pokedex/type"
+      name: "pokemon-type"
+    info:
+      url: "http://localhost:8082"
+      resource: "/api/pokedex/info"
+      name: "pokemon-info"

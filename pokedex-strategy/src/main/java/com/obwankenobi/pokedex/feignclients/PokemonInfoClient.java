@@ -6,9 +6,9 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient(url = "http://localhost:8082", name = "pokemon-info-client")
+@FeignClient(url = "${feign.clients.info.url}", name = "${feign.clients.info.name}")
 public interface PokemonInfoClient {
 
-    @PostMapping(value = "/api/pokedex/info")
+    @PostMapping(value = "${feign.clients.info.resource}")
     public PokemonInfo getPokemonInfo(@RequestBody StrategyRequest strategyRequest);
 }
