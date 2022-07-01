@@ -1,0 +1,38 @@
+server:
+  port:
+    8080
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: info
+          uri: lb://POKEDEX-INFO
+          predicates:
+            - Path=/api/pokedex/info/**
+            - Method=POST
+          filters:
+            - RemoveRequestHeader=Cookie
+
+        - id: types
+          uri: lb://POKEDEX-TABLETYPES
+          predicates:
+            - Path=/api/pokedex/type/**
+            - Method=POST
+          filters:
+            - RemoveRequestHeader=Cookie
+
+        - id: strategy
+          uri: lb://POKEDEX-STRATEGY
+          predicates:
+            - Path=/api/pokedex/strategy/**
+            - Method=POST
+          filters:
+            - RemoveRequestHeader=Cookie
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8010/eureka
