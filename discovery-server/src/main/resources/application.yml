@@ -1,12 +1,10 @@
-server:
-  port: 8010
 spring:
   application:
     name: discovery-service
 
-eureka:
-  client:
-    registerWithEureka: false
-    fetchRegistry: false
-    serviceUrl:
-      defaultZone: http://localhost:8010/eureka
+  config:
+    import:
+    - configserver:http://localhost:8888     
+  profiles:
+    active:
+    - dev

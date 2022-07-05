@@ -1,29 +1,10 @@
-server:
-  port: 8082
-  error:
-    include-stacktrace: never
-
 spring:
   application:
-    name: "pokedex-info"
+    name: pokedex-info
 
-services:
-  pokemon-info:
-    main-path: "/api/pokedex/info"
-
-eureka:
-  client:
-    enabled: true
-    serviceUrl:
-      defaultZone: http://localhost:8010/eureka
-
-feign:
-  clients:
-    pokemon:
-      url: "https://pokeapi.co"
-      resource: "/api/v2/pokemon/{name}/"
-      name: "pokemon-client"
-    species:
-      url: "https://pokeapi.co"
-      resource: "/api/v2/pokemon-species/{name}/"
-      name: "species-client"
+  config:
+    import:
+    - configserver:http://localhost:8888     
+  profiles:
+    active:
+    - dev

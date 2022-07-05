@@ -1,21 +1,10 @@
-server:
-  port: 8083
-
 spring:
   application:
-    name: "pokedex-strategy"
+    name: pokedex-strategy
 
-eureka:
-  client:
-    enabled: true
-    serviceUrl:
-      defaultZone: http://localhost:8010/eureka
-
-feign:
-  clients:
-    type:
-      resource: "/api/pokedex/type"
-      name: "POKEDEX-TABLETYPES"
-    info:
-      resource: "/api/pokedex/info"
-      name: "POKEDEX-INFO"
+  config:
+    import:
+    - configserver:http://localhost:8888     
+  profiles:
+    active:
+    - dev

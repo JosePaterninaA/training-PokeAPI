@@ -1,25 +1,10 @@
-server:
-  port: 8081
-  error:
-    include-stacktrace: never
-
 spring:
   application:
-    name: "pokedex-tabletypes"
+    name: pokedex-tabletypes
 
-services:
-  pokemon-type:
-    main-path: "/api/pokedex/type"
-
-eureka:
-  client:
-    enabled: true
-    serviceUrl:
-      defaultZone: http://localhost:8010/eureka
-
-feign:
-  clients:
-    type:
-      url: "https://pokeapi.co"
-      resource: "/api/v2/type/{name}/"
-      name: "pokemon-type"
+  config:
+    import:
+    - configserver:http://localhost:8888     
+  profiles:
+    active:
+    - dev
