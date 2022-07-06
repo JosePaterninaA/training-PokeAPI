@@ -15,7 +15,7 @@ public class PokemonStrategyController {
     @Autowired
     PokemonStrategyService pokemonStrategyService;
 
-    @PostMapping("/api/pokedex/strategy")
+    @PostMapping("${services.pokemon-strategy.main-path}")
     public ResponseEntity<PokemonStrategy> pokemonStrategyResponseEntity(@RequestBody StrategyRequest strategyRequest){
         return ResponseEntity.ok(pokemonStrategyService.getPokemonStrategyByName(strategyRequest.getName()));
     }

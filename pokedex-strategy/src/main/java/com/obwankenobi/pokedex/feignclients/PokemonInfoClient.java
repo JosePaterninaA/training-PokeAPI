@@ -10,5 +10,5 @@ import org.springframework.web.bind.annotation.RequestBody;
 public interface PokemonInfoClient {
 
     @PostMapping(value = "${feign.clients.info.resource}")
-    public PokemonInfo getPokemonInfo(@RequestBody StrategyRequest strategyRequest);
+    PokemonInfo getPokemonInfo(@RequestBody StrategyRequest strategyRequest);
 }

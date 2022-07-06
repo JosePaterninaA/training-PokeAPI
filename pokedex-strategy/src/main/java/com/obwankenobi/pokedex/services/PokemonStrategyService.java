@@ -22,24 +22,17 @@ public class PokemonStrategyService {
     @Autowired
     PokemonTableTypesClient pokemonTableTypesClient;
 
-//    @Autowired
-//    PokemonTableTypes pokemonTableTypes;
-
-
     public PokemonStrategy getPokemonStrategyByName (String name) {
 
 
         PokemonInfo pokemonInfo = pokemonInfoClient.getPokemonInfo(new StrategyRequest(name));
 
         List<String> pokemonTypesList = pokemonInfo.getTypes();
-        PokemonTableTypes pokemonTableTypes1 = pokemonTableTypesClient.getPokemonTableTypes(new StrategyRequest("electric"));
         List<TypeWeaknesses> weaknessesList = pokemonTypesList.stream().map( type -> {
            PokemonTableTypes pokemonTableTypes = pokemonTableTypesClient.getPokemonTableTypes(new StrategyRequest(type));
             return new TypeWeaknesses(type, pokemonTableTypes.getWeaknesses() );
         }).collect(Collectors.toList());
 
-        PokemonStrategy pokemonStrategyResponse = new PokemonStrategy(pokemonInfo.getId(), pokemonInfo.getName(), weaknessesList);
-
-        return pokemonStrategyResponse;
+        return new PokemonStrategy(pokemonInfo.getId(), pokemonInfo.getName(), weaknessesList);
     }
 }

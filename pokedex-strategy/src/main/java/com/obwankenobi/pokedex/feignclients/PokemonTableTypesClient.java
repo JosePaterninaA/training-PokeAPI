@@ -9,5 +9,5 @@ import org.springframework.web.bind.annotation.*;
 public interface PokemonTableTypesClient {
 
     @PostMapping(value = "${feign.clients.type.resource}")
-    public PokemonTableTypes getPokemonTableTypes(@RequestBody StrategyRequest type);
+    PokemonTableTypes getPokemonTableTypes(@RequestBody StrategyRequest type);
 }
