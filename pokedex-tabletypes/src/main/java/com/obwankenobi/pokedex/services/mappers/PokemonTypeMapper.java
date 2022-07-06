@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -27,7 +28,7 @@ public class PokemonTypeMapper {
 	private static final String NO_LABEL = "No";
 
 	
-	public PokemonType getPokemonTypeInfo(String data) throws Exception{
+	public PokemonType getPokemonTypeInfo(String data) throws JsonProcessingException {
 		
 		ObjectMapper mapper = new ObjectMapper();
 		List<Weakness> weaknesses = new ArrayList<>();
