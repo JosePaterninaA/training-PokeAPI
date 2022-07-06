@@ -7,6 +7,7 @@ import com.obwankenobi.pokedex.feignclients.model.PokemonTableTypes;
 import com.obwankenobi.pokedex.model.PokemonStrategy;
 import com.obwankenobi.pokedex.model.StrategyRequest;
 import com.obwankenobi.pokedex.model.TypeWeaknesses;
+import feign.FeignException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,8 +23,7 @@ public class PokemonStrategyService {
     @Autowired
     PokemonTableTypesClient pokemonTableTypesClient;
 
-    public PokemonStrategy getPokemonStrategyByName (String name) {
-
+    public PokemonStrategy getPokemonStrategyByName (String name) throws FeignException {
 
         PokemonInfo pokemonInfo = pokemonInfoClient.getPokemonInfo(new StrategyRequest(name));
 

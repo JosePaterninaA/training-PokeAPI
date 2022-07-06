@@ -1,6 +1,6 @@
 package com.obwankenobi.pokedex.services;
 
-import com.obwankenobi.pokedex.exceptions.PokemonInfoException;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.obwankenobi.pokedex.feignclients.SpeciesClient;
 import com.obwankenobi.pokedex.services.mappers.PokemonInfoStringMapper;
 import feign.FeignException;
@@ -28,17 +28,12 @@ public class PokemonInfoService {
 	 * Dado un nombre crea un {@link PokemonInfo} consolidando datos de {@link PokemonClient} y {@link SpeciesClient}
 	 * @param name
 	 * @return {@link PokemonInfo}
-	 * @throws PokemonInfoException
 	 */
-	public PokemonInfo getPokemonInfoByName (String name) throws PokemonInfoException {
+	public PokemonInfo getPokemonInfoByName (String name) throws FeignException, JsonProcessingException {
 
-		try{
-			String pokemonTypeData = pokemonClient.getPokemonData(name);
-			String pokemonDescriptionData = speciesClient.getSpeciesData(name);
+		String pokemonTypeData = pokemonClient.getPokemonData(name);
+		String pokemonDescriptionData = speciesClient.getSpeciesData(name);
 
-			return pokemonInfoStringMapper.mapJSONStringToPokemonInfo(pokemonTypeData, pokemonDescriptionData);
-		}catch (PokemonInfoException | FeignException.FeignClientException e){
-			throw new PokemonInfoException(e.getMessage(), e);
-		}
+		return pokemonInfoStringMapper.mapJSONStringToPokemonInfo(pokemonTypeData, pokemonDescriptionData);
 	}
 }

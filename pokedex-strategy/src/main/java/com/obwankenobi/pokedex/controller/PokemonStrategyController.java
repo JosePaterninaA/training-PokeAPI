@@ -16,7 +16,7 @@ public class PokemonStrategyController {
     PokemonStrategyService pokemonStrategyService;
 
     @PostMapping("${services.pokemon-strategy.main-path}")
-    public ResponseEntity<PokemonStrategy> pokemonStrategyResponseEntity(@RequestBody StrategyRequest strategyRequest){
+    public ResponseEntity<PokemonStrategy> pokemonStrategyResponseEntity(@RequestBody StrategyRequest strategyRequest) throws Exception{
         return ResponseEntity.ok(pokemonStrategyService.getPokemonStrategyByName(strategyRequest.getName()));
     }
 }

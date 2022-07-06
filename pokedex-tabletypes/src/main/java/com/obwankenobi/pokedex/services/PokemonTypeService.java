@@ -1,9 +1,10 @@
 package com.obwankenobi.pokedex.services;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import feign.FeignException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.obwankenobi.pokedex.config.exceptions.PokemonException;
 import com.obwankenobi.pokedex.feignclients.PokemonTypeClient;
 import com.obwankenobi.pokedex.model.PokemonType;
 import com.obwankenobi.pokedex.services.mappers.PokemonTypeMapper;
@@ -16,14 +17,11 @@ public class PokemonTypeService {
 	@Autowired
 	PokemonTypeMapper pokemonTypeMapper;
 
-	public PokemonType getPokemonTypeByName(String name) throws Exception {
+	public PokemonType getPokemonTypeByName(String name) throws FeignException, JsonProcessingException {
 
 		String pokemonTypeData;
-		try {
-			pokemonTypeData = typeClient.getPokemonData(name);
-		} catch (Exception e) {
-			throw new PokemonException(e.getMessage());
-		}
+		pokemonTypeData = typeClient.getPokemonData(name);
+
 		return pokemonTypeMapper.getPokemonTypeInfo(pokemonTypeData);
 	}
 }
