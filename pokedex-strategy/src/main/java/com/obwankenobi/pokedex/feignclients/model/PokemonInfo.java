@@ -5,6 +5,9 @@ import lombok.Data;
 
 import java.util.List;
 
+/**
+ * Class that contains the properties id, name, types lists of types and descriptionItem
+ */
 @Data
 @AllArgsConstructor
 public class PokemonInfo {

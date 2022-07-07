@@ -14,6 +14,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Service of PokemonStrategy
+ */
 @Service
 public class PokemonStrategyService {
 
@@ -23,6 +26,12 @@ public class PokemonStrategyService {
     @Autowired
     PokemonTableTypesClient pokemonTableTypesClient;
 
+    /**
+     * method that returns a PokemonStrategy instance from PokemonInfo and PokemonTableTypes instances
+     * @param name
+     * @return
+     * @throws FeignException
+     */
     public PokemonStrategy getPokemonStrategyByName (String name) throws FeignException {
 
         PokemonInfo pokemonInfo = pokemonInfoClient.getPokemonInfo(new StrategyRequest(name));

@@ -6,6 +6,9 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+/**
+ * Class that contains id, name and a list of weaknesses of a pokemon
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
