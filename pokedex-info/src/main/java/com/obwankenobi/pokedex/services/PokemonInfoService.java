@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import com.obwankenobi.pokedex.feignclients.PokemonClient;
 import com.obwankenobi.pokedex.model.PokemonInfo;
 
+import java.util.Locale;
+
 /**
  * Data usada como response body en las implementaciones de la API.
  */
@@ -31,6 +33,10 @@ public class PokemonInfoService {
 	 * @throws {@link FeignException}, {@link PokemonException}
 	 */
 	public PokemonInfo getPokemonInfoByName (String name) throws FeignException, PokemonException {
+
+		if(name == null) throw new PokemonException("Name must not be null.");
+
+		name = name.toLowerCase();
 
 		String pokemonTypeData = pokemonClient.getPokemonData(name);
 		String pokemonDescriptionData = speciesClient.getSpeciesData(name);
