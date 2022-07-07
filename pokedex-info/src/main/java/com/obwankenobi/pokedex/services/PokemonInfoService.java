@@ -1,6 +1,7 @@
 package com.obwankenobi.pokedex.services;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.google.common.base.Strings;
 import com.obwankenobi.pokedex.config.exceptions.PokemonException;
 import com.obwankenobi.pokedex.feignclients.SpeciesClient;
 import com.obwankenobi.pokedex.services.mappers.PokemonInfoStringMapper;
@@ -34,7 +35,7 @@ public class PokemonInfoService {
 	 */
 	public PokemonInfo getPokemonInfoByName (String name) throws FeignException, PokemonException {
 
-		if(name == null) throw new PokemonException("Name must not be null.");
+		if(Strings.isNullOrEmpty(name)) throw new PokemonException("Name must not be null.");
 
 		name = name.toLowerCase();
 
