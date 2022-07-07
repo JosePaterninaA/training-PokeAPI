@@ -10,12 +10,25 @@ import com.obwankenobi.pokedex.model.PokemonRequest;
 import com.obwankenobi.pokedex.model.PokemonType;
 import com.obwankenobi.pokedex.services.PokemonTypeService;
 
+/**
+ * 
+ * Controller of pokemontype APIs
+ * @author nathaly.salamanca
+ *
+ */
 @RestController
 public class PokemonTypeController {
+	
 
 	@Autowired
 	PokemonTypeService pokemonTypeService;
 	
+	/**
+	 * This method get the pokemon type information given  a pokemon name 
+	 * @param request {@link PokemonRequest}
+	 * @return {@link ResponseEntity}
+	 * @throws Exception
+	 */
 	@PostMapping("${services.pokemon-type.main-path}")
 	public ResponseEntity<PokemonType> pokemonTypeInfo(@RequestBody PokemonRequest request) throws Exception{
 		

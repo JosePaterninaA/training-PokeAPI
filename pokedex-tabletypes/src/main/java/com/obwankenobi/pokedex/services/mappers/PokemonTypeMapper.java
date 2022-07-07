@@ -14,6 +14,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.obwankenobi.pokedex.model.PokemonType;
 import com.obwankenobi.pokedex.model.Weakness;
 
+/**
+ * This class manage the mapping data from string json response into a class {@Link PokemonType}
+ * @author nathaly.salamanca
+ *
+ */
 @Component
 public class PokemonTypeMapper {
 	
@@ -27,7 +32,12 @@ public class PokemonTypeMapper {
 	private static final String HALF_LABEL = "Half";
 	private static final String NO_LABEL = "No";
 
-	
+	/**
+	 * 
+	 * @param data json to get pokemon type data and wicknesses
+	 * @return pokemon type data {@link PokemonType}
+	 * @throws JsonProcessingException
+	 */
 	public PokemonType getPokemonTypeInfo(String data) throws JsonProcessingException {
 		
 		ObjectMapper mapper = new ObjectMapper();
@@ -48,7 +58,13 @@ public class PokemonTypeMapper {
 				.build();
 	
 	}
-	
+	/**
+	 * this method manages the extraction of weaknesses data
+	 * @param typeNode json node to get data
+	 * @param damageLevel kind of pokemon damage to chose list to extract data
+	 * @param damageValue label with the name of damage level 
+	 * @return List of weaknesses {@link Weakness}
+	 */
 	private List<Weakness> getDamageList(JsonNode typeNode, String damageLevel,String damageValue) {
 		
 		JsonNode weaknessNode = typeNode.get(damageLevel);
