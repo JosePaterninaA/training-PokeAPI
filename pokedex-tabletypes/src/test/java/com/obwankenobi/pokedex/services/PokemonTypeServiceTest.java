@@ -1,5 +1,6 @@
 package com.obwankenobi.pokedex.services;
 
+import com.obwankenobi.pokedex.config.exceptions.PokemonException;
 import com.obwankenobi.pokedex.feignclients.PokemonTypeClient;
 import feign.FeignException;
 import org.junit.jupiter.api.BeforeAll;
@@ -26,9 +27,14 @@ public class PokemonTypeServiceTest {
     }
 
     @Test
-    void givenNullData_whenTypeClientFails_throwsFeignException() throws Exception {
+    void whenNullData_throwsPokemonException() throws Exception {
         String name = null;
-        when(pokemonTypeClient.getPokemonData(name)).thenThrow(FeignException.class);
-        assertThrows(FeignException.class, ()->pokemonTypeService.getPokemonTypeByName(name));
+        assertThrows(PokemonException.class, ()->pokemonTypeService.getPokemonTypeByName(name));
+    }
+
+    @Test
+    void whenEmptyData_throwsPokemonException() throws Exception {
+        String name = "";
+        assertThrows(PokemonException.class, ()->pokemonTypeService.getPokemonTypeByName(name));
     }
 }
