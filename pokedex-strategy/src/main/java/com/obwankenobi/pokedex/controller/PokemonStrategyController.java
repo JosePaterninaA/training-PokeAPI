@@ -15,6 +15,12 @@ public class PokemonStrategyController {
     @Autowired
     PokemonStrategyService pokemonStrategyService;
 
+    /**
+     * Method that returns a PokemonStrategy consuming the services pokedex-info and pokedex-tabletypes
+     * @param strategyRequest
+     * @return
+     * @throws Exception
+     */
     @PostMapping("${services.pokemon-strategy.main-path}")
     public ResponseEntity<PokemonStrategy> pokemonStrategyResponseEntity(@RequestBody StrategyRequest strategyRequest) throws Exception{
         return ResponseEntity.ok(pokemonStrategyService.getPokemonStrategyByName(strategyRequest.getName()));
