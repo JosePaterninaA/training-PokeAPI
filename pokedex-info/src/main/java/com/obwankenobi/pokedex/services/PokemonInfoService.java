@@ -1,6 +1,7 @@
 package com.obwankenobi.pokedex.services;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.obwankenobi.pokedex.config.exceptions.PokemonException;
 import com.obwankenobi.pokedex.feignclients.SpeciesClient;
 import com.obwankenobi.pokedex.services.mappers.PokemonInfoStringMapper;
 import feign.FeignException;
@@ -18,7 +19,6 @@ public class PokemonInfoService {
 
 	@Autowired
 	PokemonClient pokemonClient;
-
 	@Autowired
 	SpeciesClient speciesClient;
 	@Autowired
@@ -28,8 +28,9 @@ public class PokemonInfoService {
 	 * Dado un nombre crea un {@link PokemonInfo} consolidando datos de {@link PokemonClient} y {@link SpeciesClient}
 	 * @param name
 	 * @return {@link PokemonInfo}
+	 * @throws {@link FeignException}, {@link PokemonException}
 	 */
-	public PokemonInfo getPokemonInfoByName (String name) throws FeignException, JsonProcessingException {
+	public PokemonInfo getPokemonInfoByName (String name) throws FeignException, PokemonException {
 
 		String pokemonTypeData = pokemonClient.getPokemonData(name);
 		String pokemonDescriptionData = speciesClient.getSpeciesData(name);
