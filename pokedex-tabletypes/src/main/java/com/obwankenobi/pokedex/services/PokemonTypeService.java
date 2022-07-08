@@ -32,9 +32,6 @@ public class PokemonTypeService {
 	 * @throws FeignException
 	 * @throws JsonProcessingException
 	 */
-	public PokemonType getPokemonTypeByName(String name) throws FeignException, JsonProcessingException {
-
-
 	public PokemonType getPokemonTypeByName(String name) throws FeignException, PokemonException {
 
 		if(Strings.isNullOrEmpty(name)) throw new PokemonException("Name must not be null.");

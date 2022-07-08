@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.obwankenobi.pokedex.exceptions.PokemonException;
+import com.obwankenobi.pokedex.config.exceptions.PokemonException;
 
 /**
  * This class manage configuration and reponse of exceptions  
