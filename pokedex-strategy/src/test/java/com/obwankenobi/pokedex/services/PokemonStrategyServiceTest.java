@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
+import com.obwankenobi.pokedex.config.exceptions.PokemonException;
 import com.obwankenobi.pokedex.feignclients.PokemonInfoClient;
 import com.obwankenobi.pokedex.feignclients.PokemonTableTypesClient;
 import com.obwankenobi.pokedex.feignclients.model.PokemonInfo;
@@ -41,21 +42,19 @@ class PokemonStrategyServiceTest {
     }
 
     @Test
-    void givenNullName_throwsFeignException(){
+    void givenNullName_throwsPokemonException(){
         String name = null;
-        when(pokemonInfoClient.getPokemonInfo(any(StrategyRequest.class))).thenThrow(FeignException.class);
-        assertThrows(FeignException.class, () -> pokemonStrategyService.getPokemonStrategyByName(name));
+        assertThrows(PokemonException.class, () -> pokemonStrategyService.getPokemonStrategyByName(name));
     }
 
     @Test
-    void givenEmptyName_throwsFeignException(){
+    void givenEmptyName_throwsPokemonException(){
         String name = "";
-        when(pokemonInfoClient.getPokemonInfo(any(StrategyRequest.class))).thenThrow(FeignException.class);
-        assertThrows(FeignException.class, () -> pokemonStrategyService.getPokemonStrategyByName(name));
+        assertThrows(PokemonException.class, () -> pokemonStrategyService.getPokemonStrategyByName(name));
     }
 
     @Test
-    void givenPikachuAsName_returnStrategyData(){
+    void givenPikachuAsName_returnStrategyData() throws PokemonException {
         String name = "pikachu";
 
         when(pokemonInfoClient.getPokemonInfo(any(StrategyRequest.class)))

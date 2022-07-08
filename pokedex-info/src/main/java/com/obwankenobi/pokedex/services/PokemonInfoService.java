@@ -42,6 +42,8 @@ public class PokemonInfoService {
 		String pokemonTypeData = pokemonClient.getPokemonData(name);
 		String pokemonDescriptionData = speciesClient.getSpeciesData(name);
 
+		if(Strings.isNullOrEmpty(pokemonTypeData) || Strings.isNullOrEmpty(pokemonDescriptionData)) throw new PokemonException("Name is not valid.");
+
 		return pokemonInfoStringMapper.mapJSONStringToPokemonInfo(pokemonTypeData, pokemonDescriptionData);
 	}
 }

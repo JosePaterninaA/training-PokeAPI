@@ -1,5 +1,7 @@
 package com.obwankenobi.pokedex.services;
 
+import com.google.common.base.Strings;
+import com.obwankenobi.pokedex.config.exceptions.PokemonException;
 import com.obwankenobi.pokedex.feignclients.PokemonInfoClient;
 import com.obwankenobi.pokedex.feignclients.PokemonTableTypesClient;
 import com.obwankenobi.pokedex.feignclients.model.PokemonInfo;
@@ -32,11 +34,17 @@ public class PokemonStrategyService {
      * @return
      * @throws FeignException
      */
-    public PokemonStrategy getPokemonStrategyByName (String name) throws FeignException {
+    public PokemonStrategy getPokemonStrategyByName (String name) throws FeignException, PokemonException {
 
+        if(Strings.isNullOrEmpty(name)) throw new PokemonException("Name must not be null.");
+
+        name = name.toLowerCase();
         PokemonInfo pokemonInfo = pokemonInfoClient.getPokemonInfo(new StrategyRequest(name));
 
         List<String> pokemonTypesList = pokemonInfo.getTypes();
+
+        if(pokemonTypesList == null) throw new PokemonException("Name is not valid.");
+
         List<TypeWeaknesses> weaknessesList = pokemonTypesList.stream().map( type -> {
            PokemonTableTypes pokemonTableTypes = pokemonTableTypesClient.getPokemonTableTypes(new StrategyRequest(type));
             return new TypeWeaknesses(type, pokemonTableTypes.getWeaknesses() );

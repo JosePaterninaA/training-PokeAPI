@@ -11,6 +11,8 @@ import com.obwankenobi.pokedex.feignclients.PokemonTypeClient;
 import com.obwankenobi.pokedex.model.PokemonType;
 import com.obwankenobi.pokedex.services.mappers.PokemonTypeMapper;
 
+import java.util.Locale;
+
 /**
  * This class provides the services related to pokemon type 
  * @author nathaly.salamanca
@@ -36,8 +38,12 @@ public class PokemonTypeService {
 
 		if(Strings.isNullOrEmpty(name)) throw new PokemonException("Name must not be null.");
 
+		name = name.toLowerCase();
+
 		String pokemonTypeData;
 		pokemonTypeData = typeClient.getPokemonData(name);
+
+		if(Strings.isNullOrEmpty(pokemonTypeData)) throw new PokemonException("Name is not valid.");
 
 		return pokemonTypeMapper.getPokemonTypeInfo(pokemonTypeData);
 	}

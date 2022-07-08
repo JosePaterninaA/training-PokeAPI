@@ -2,6 +2,7 @@ package com.obwankenobi.pokedex.feignclients;
 
 import com.obwankenobi.pokedex.feignclients.model.PokemonInfo;
 import com.obwankenobi.pokedex.model.StrategyRequest;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
