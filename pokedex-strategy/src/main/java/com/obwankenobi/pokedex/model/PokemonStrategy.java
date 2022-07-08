@@ -6,6 +6,9 @@ import lombok.Data;
 
 import java.util.List;
 
+/**
+ * It has properties id, name and list of weaknesses of a pokemon
+ */
 @Data
 @AllArgsConstructor
 @Builder

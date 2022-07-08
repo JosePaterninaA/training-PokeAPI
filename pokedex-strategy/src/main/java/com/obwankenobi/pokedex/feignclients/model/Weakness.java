@@ -4,6 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Class that contains a list of waeknesses associated with a type of pokemon
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

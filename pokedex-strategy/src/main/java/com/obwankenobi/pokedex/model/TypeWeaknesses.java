@@ -6,6 +6,9 @@ import lombok.Data;
 
 import java.util.List;
 
+/**
+ * It contains a list of waeknesses associated with a type of pokemon
+ */
 @Data
 @AllArgsConstructor
 public class TypeWeaknesses {
