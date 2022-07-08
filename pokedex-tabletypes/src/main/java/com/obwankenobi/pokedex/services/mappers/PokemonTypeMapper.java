@@ -7,6 +7,8 @@ import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.google.common.base.Strings;
+import com.obwankenobi.pokedex.config.exceptions.InvalidPokemonJsonFormat;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -32,32 +34,40 @@ public class PokemonTypeMapper {
 	private static final String HALF_LABEL = "Half";
 	private static final String NO_LABEL = "No";
 
+
 	/**
 	 * 
 	 * @param data json to get pokemon type data and wicknesses
 	 * @return pokemon type data {@link PokemonType}
 	 * @throws JsonProcessingException
 	 */
-	public PokemonType getPokemonTypeInfo(String data) throws JsonProcessingException {
-		
-		ObjectMapper mapper = new ObjectMapper();
-		List<Weakness> weaknesses = new ArrayList<>();
+	public PokemonType getPokemonTypeInfo(String data) throws InvalidPokemonJsonFormat {
 
-		JsonNode typeNode = mapper.readTree(data);
-		JsonNode weaknessesJson = typeNode.get(DAMAGE_LIST_FIELD);
-			
-		weaknesses.addAll(getDamageList(weaknessesJson, DOUBLE_DAMAGE_FIELD, DOUBLE_LABEL ));
-		weaknesses.addAll(getDamageList(weaknessesJson, HALF_DAMAGE_FIELD, HALF_LABEL));
-		weaknesses.addAll(getDamageList(weaknessesJson, NO_DAMAGE_FIELD, NO_LABEL));				 
+		if(Strings.isNullOrEmpty(data)){
+			throw new InvalidPokemonJsonFormat("No empty data allowed.");
+		}
 
-			
-		return PokemonType.builder()
-				.id(typeNode.get(ID_FIELD).asText())
-				.name(typeNode.get(NAME_FIELD).asText())
-				.weaknesses(weaknesses)
-				.build();
-	
+		try{
+			ObjectMapper mapper = new ObjectMapper();
+			List<Weakness> weaknesses = new ArrayList<>();
+
+			JsonNode typeNode = mapper.readTree(data);
+			JsonNode weaknessesJson = typeNode.get(DAMAGE_LIST_FIELD);
+
+			weaknesses.addAll(getDamageList(weaknessesJson, DOUBLE_DAMAGE_FIELD, DOUBLE_LABEL ));
+			weaknesses.addAll(getDamageList(weaknessesJson, HALF_DAMAGE_FIELD, HALF_LABEL));
+			weaknesses.addAll(getDamageList(weaknessesJson, NO_DAMAGE_FIELD, NO_LABEL));
+
+			return PokemonType.builder()
+					.id(typeNode.get(ID_FIELD).asText())
+					.name(typeNode.get(NAME_FIELD).asText())
+					.weaknesses(weaknesses)
+					.build();
+		}catch (NullPointerException | JsonProcessingException e){
+			throw new InvalidPokemonJsonFormat(e.getMessage(), e);
+		}
 	}
+
 	/**
 	 * this method manages the extraction of weaknesses data
 	 * @param typeNode json node to get data
