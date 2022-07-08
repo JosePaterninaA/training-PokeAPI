@@ -4,6 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
+/**
+ * weakness data
+ * @author nathaly.salamanca
+ *
+ */
+
 @Data
 @AllArgsConstructor
 @Builder

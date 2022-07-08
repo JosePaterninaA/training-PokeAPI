@@ -6,6 +6,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
+/**
+ * Pokemon type data
+ * @author nathaly.salamanca
+ *
+ */
 @Data
 @AllArgsConstructor
 @Builder

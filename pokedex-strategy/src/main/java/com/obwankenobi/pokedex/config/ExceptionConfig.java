@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Class to manage the exceptions
+ */
 @ControllerAdvice(annotations = RestController.class)
 public class ExceptionConfig {
 

@@ -4,7 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * Data que representa un incoming request con el nombre de un pokemon.
+ * Data representing an incoming request with the name of the Pokemon.
  */
 @Data
 @NoArgsConstructor

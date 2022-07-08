@@ -5,13 +5,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 /**
- * Cliente openfeign que consume la API pokeapi/species
+ * OpenFeign client to consume the pokeapi/species API.
  */
 @FeignClient(url = "${feign.clients.species.url}", name = "${feign.clients.species.name}")
 
 public interface SpeciesClient {
     /**
-     * Obtiene JSON string con información sobre la especie dado un nombre
+     * Gets a JSON string with the pokemon species information given a name.
      * @param name
      * @return {@link String}
      */

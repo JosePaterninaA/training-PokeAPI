@@ -6,6 +6,9 @@ import lombok.Data;
 
 import java.util.List;
 
+/**
+ * It has properties id, name and list of weaknesses of a pokemon
+ */
 @Data
 @AllArgsConstructor
 @Builder
@@ -13,6 +16,6 @@ public class PokemonStrategy {
 
     private String id;
     private String name;
-    private List<TypeWeaknesses> typesTypeWeaknessesList;
+    private List<TypeWeaknesses> typeWeaknesses;
 
 }

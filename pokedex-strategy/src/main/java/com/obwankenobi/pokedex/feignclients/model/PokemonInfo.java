@@ -6,6 +6,9 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+/**
+ * Class that contains the properties id, name, types lists of types and descriptionItem
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
