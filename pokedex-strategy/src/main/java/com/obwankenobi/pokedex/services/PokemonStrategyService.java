@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Service of PokemonStrategy
+ * Service of PokemonStrategy that obtains strategy information by pokemon name
  */
 @Service
 public class PokemonStrategyService {
