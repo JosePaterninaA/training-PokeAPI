@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.obwankenobi.pokedex.services.PokemonInfoService;
 
 /**
- * Controlador con APIS expuestas
+ * Controller to expose APIs
  */
 @RestController
 public class PokemonInfoController {
@@ -19,7 +19,7 @@ public class PokemonInfoController {
 	PokemonInfoService pokemonInfoService;
 
 	/**
-	 * API que consulta tipos y descripciones de un pokemon dado su nombre.
+	 * API that provides types and descriptions of a Pokemon given its name.
 	 * @param request
 	 * @return
 	 * @throws Exception

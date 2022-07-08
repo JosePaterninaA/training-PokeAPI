@@ -1,10 +1,10 @@
 package com.obwankenobi.pokedex.config.exceptions;
 
-import lombok.Builder;
-
+/**
+ * General business exception
+ */
 public class PokemonException extends Exception {
 
-	@Builder
 	public PokemonException(String message, Throwable cause) {
 		super(message, cause);
 	}

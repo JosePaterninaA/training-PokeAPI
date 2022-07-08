@@ -15,7 +15,7 @@ import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
 /**
- * Deserializa JSON strings para obtener datos específicos.
+ * Deserializes JSON strings into {@link PokemonInfo} objects.
  */
 @Component
 public class PokemonInfoStringMapper {
@@ -31,7 +31,7 @@ public class PokemonInfoStringMapper {
     private static final String ENGLISH = "en";
 
     /**
-     * Deserializa JSON strings con información sobre el tipo y descripción en un objeto del tipo {@link PokemonInfo}
+     * Deserialized JSON strings with types and descriptions data into a {@link PokemonInfo} object.
      * @param typeData
      * @param descriptionData
      * @return {@link PokemonInfo}

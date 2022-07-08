@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 /**
- * Data que representa una descripción de un pokemon.
+ * Data representing a Pokemon description item.
  */
 @Data
 @AllArgsConstructor
