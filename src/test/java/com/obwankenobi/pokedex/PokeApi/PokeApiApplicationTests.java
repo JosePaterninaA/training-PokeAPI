@@ -1,9 +1,13 @@
-package com.obwankenobi.discoveryserver;
+package com.obwankenobi.pokedex.PokeApi;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class DiscoveryServerApplicationTests {
+class PokeApiApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
 
 }

@@ -8,7 +8,10 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/nathalysalamanca/pokedex-config-server
+          uri: https://github.com/JosePaterninaA/pokeapi-config-server
+          clone-on-start: true
+          strict-host-key-checking: false
+          force-pull: true
 
   # Spring properties in case you use different profiles
   #profiles:

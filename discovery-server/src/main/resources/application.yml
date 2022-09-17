@@ -4,7 +4,7 @@ spring:
 
   config:
     import:
-    - configserver:http://localhost:8888     
+    - configserver:http://pokedex-config-server:8888
   profiles:
     active:
     - dev

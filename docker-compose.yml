@@ -1,0 +1,83 @@
+version: "3.9"
+services:
+  pokedex-config-server:
+    container_name: pokedex-config-server
+    build:
+      context: ./
+      dockerfile: ./pokedex-config-server/Dockerfile
+    ports:
+      - "8888:8888"
+    networks:
+      - spring
+
+  discovery-server:
+    container_name: discovery-server
+    build:
+      context: ./
+      dockerfile: ./discovery-server/Dockerfile
+    ports:
+      - "8001:8001"
+    networks:
+      - spring
+    depends_on:
+      - pokedex-config-server
+    restart: always
+
+  api-gateway:
+    container_name: api-gateway
+    build:
+      context: ./
+      dockerfile: ./api-gateway/Dockerfile
+    ports:
+      - "8080:8080"
+    networks:
+      - spring
+    depends_on:
+      - pokedex-config-server
+      - discovery-server
+    restart: always
+
+  pokedex-info:
+    container_name: pokedex-info
+    build:
+      context: ./
+      dockerfile: ./pokedex-info/Dockerfile
+    ports:
+      - "8081:8081"
+    networks:
+      - spring
+    depends_on:
+      - pokedex-config-server
+      - discovery-server
+    restart: always
+
+  pokedex-strategy:
+    container_name: pokedex-strategy
+    build:
+      context: ./
+      dockerfile: ./pokedex-strategy/Dockerfile
+    ports:
+      - "8082:8082"
+    networks:
+      - spring
+    depends_on:
+      - pokedex-config-server
+      - discovery-server
+    restart: always
+
+  pokedex-tabletypes:
+    container_name: pokedex-tabletypes
+    build:
+      context: ./
+      dockerfile: ./pokedex-tabletypes/Dockerfile
+    ports:
+      - "8083:8083"
+    networks:
+      - spring
+    depends_on:
+      - pokedex-config-server
+      - discovery-server
+    restart: always
+
+networks:
+  spring:
